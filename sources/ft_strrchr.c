@@ -1,27 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cjani <cjani@studen.21-school.ru>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/04/30 14:04:31 by flexer            #+#    #+#             */
-/*   Updated: 2020/05/07 16:06:18 by cjani            ###   ########.fr       */
+/*   Created: 2020/05/05 16:44:12 by flexer            #+#    #+#             */
+/*   Updated: 2020/05/05 17:15:15 by cjani            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./sources/libft.h"
+#include "libft.h"
 
-void		main(void)
+char		*ft_strrchr(const char *s, int c)
 {
-	char	dest[15] = "Test String";
+	char	*ptrs;
 	int		i;
 
-	i = 0;
-	while (dest[i] != '\0')
+	ptrs = (char *)s;
+	i = ft_strlen(ptrs);
+	ptrs += i;
+	while (i-- >= 0)
 	{
-		dest[i] = ft_tolower(dest[i]);
-		i++;
+		if (*ptrs == c)
+			return (ptrs);
+		ptrs -= 1;
 	}
-	printf ("src new: %s\n", dest);
+	return (NULL);
 }
