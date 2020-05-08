@@ -2,10 +2,11 @@ CC = gcc
 CFLAGS = -c -Wall -Wextra -Werror
 SOURCE = ./sources/*.c
 HEADER = ./sources/libft.h
+NAME = libft
 
-all: libft
+all: $(NAME)
 
-libft:
+$(NAME):
 	$(CC) $(CFLAGS) $(HEADER) $(SOURCE)
 	ar rc libft.a *.o
 	ranlib libft.a
