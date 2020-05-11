@@ -6,7 +6,7 @@
 /*   By: cjani <cjani@studen.21-school.ru>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/30 12:41:03 by flexer            #+#    #+#             */
-/*   Updated: 2020/05/08 15:59:29 by cjani            ###   ########.fr       */
+/*   Updated: 2020/05/11 10:13:34 by cjani            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define LIBFT_H
 # include <unistd.h>
 # include <string.h>
+# include <stdlib.h>
 # include <stdio.h>
 
 void	ft_putchar(char c);
@@ -31,7 +32,7 @@ void	*ft_memchr(const void *arr, int c, size_t n);
 int		ft_memcmp(const void *s1, const void *s2, size_t n);
 char	*ft_strchr(const char *s, int c);
 char	*ft_strrchr(const char *s, int c);
-char	*ft_strnstr (const char *srcng, const char *srcd, size_t n);
+char	*ft_strnstr (const char *big, const char *little, size_t n);
 int		ft_isdigit(int c);
 int		ft_isalnum(int c);
 int		ft_isascii(int c);
@@ -41,5 +42,8 @@ int		ft_toupper(int c);
 int		ft_tolower(int c);
 size_t	ft_strlcpy(char *dest, const char *src, size_t size);
 size_t	ft_strlcat(char *dest, const char *src, size_t size);
+void	*ft_calloc(size_t num, size_t sizeb);
+char	*ft_strdup(const char *str);
+int		ft_strncmp(const char *str1, const char *str2, size_t n);
 
 #endif

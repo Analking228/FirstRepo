@@ -1,24 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strdub.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cjani <cjani@studen.21-school.ru>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/04/30 14:04:31 by flexer            #+#    #+#             */
-/*   Updated: 2020/05/11 10:15:31 by cjani            ###   ########.fr       */
+/*   Created: 2020/05/10 21:56:29 by flexer            #+#    #+#             */
+/*   Updated: 2020/05/10 22:12:44 by cjani            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./sources/libft.h"
+#include "libft.h"
 
-void		main(void)
+char		*ft_strdup(const char *str)
 {
-	char	src[10] = "123456789";
-	char	dest[10] = "345";
-	char	*ptr;
-	printf ("src old: %s\n", src);
-	printf ("dest old: %s\n", dest);
-	ptr = strstr(src, dest);
-	printf ("%s\n", ptr);
+	char	*newstr;
+	size_t	len;
+
+	len = ft_strlen(str);
+	newstr = (char *)ft_calloc(len, sizeof(char));
+	ft_memcpy(newstr, str, len);
+	newstr[len + 1] = '\0';
+	return (newstr);
 }

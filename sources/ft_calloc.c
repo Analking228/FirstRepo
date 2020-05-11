@@ -1,24 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cjani <cjani@studen.21-school.ru>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/04/30 14:04:31 by flexer            #+#    #+#             */
-/*   Updated: 2020/05/11 10:15:31 by cjani            ###   ########.fr       */
+/*   Created: 2020/05/10 21:04:35 by flexer            #+#    #+#             */
+/*   Updated: 2020/05/10 21:33:40 by cjani            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./sources/libft.h"
+#include "libft.h"
 
-void		main(void)
+void		*ft_calloc(size_t num, size_t sizeb)
 {
-	char	src[10] = "123456789";
-	char	dest[10] = "345";
-	char	*ptr;
-	printf ("src old: %s\n", src);
-	printf ("dest old: %s\n", dest);
-	ptr = strstr(src, dest);
-	printf ("%s\n", ptr);
+	void	*memptr;
+
+	if (!num || !sizeb)
+		return (NULL);
+	memptr = malloc(sizeb * (num + 1));
+	if (!memptr)
+		return (NULL);
+	return (memptr);
 }

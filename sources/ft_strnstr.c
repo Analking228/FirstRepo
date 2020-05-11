@@ -6,20 +6,22 @@
 /*   By: cjani <cjani@studen.21-school.ru>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/05 17:31:26 by flexer            #+#    #+#             */
-/*   Updated: 2020/05/05 18:05:01 by cjani            ###   ########.fr       */
+/*   Updated: 2020/05/11 10:37:50 by cjani            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int			strchecker(char *ptr_srcng, char *ptr_srcd)
+int			strchecker(char *ptrb, char *ptrl, size_t len)
 {
 	char	*ptr1;
 	char	*ptr2;
+	size_t	n;
 
-	ptr1 = ptr_srcng;
-	ptr2 = ptr_srcd;
-	while (*ptr2 == '\0')
+	n = len;
+	ptr1 = ptrb;
+	ptr2 = ptrl;
+	while (n--)
 	{
 		if (*ptr1 != *ptr2)
 			return (0);
@@ -29,22 +31,23 @@ int			strchecker(char *ptr_srcng, char *ptr_srcd)
 	return (1);
 }
 
-char		*ft_strnstr(const char *srcng, const char *srcd, size_t n)
+char		*ft_strnstr(const char *big, const char *little, size_t n)
 {
-	char	*ptr_srcd;
-	char	*ptr_srcng;
+	char	*ptrb;
+	char	*ptrl;
+	size_t	len;
 
-	ptr_srcng = (char *)srcng;
-	ptr_srcd = (char *)srcd;
-	if (!*ptr_srcd)
-		return (ptr_srcng);
-	while (n)
+	ptrb = (char *)big;
+	ptrl = (char *)little;
+	len = ft_strlen(ptrl);
+	if (!*ptrl || !len)
+		return (ptrb);
+	while (n--)
 	{
-		if (*ptr_srcng == *ptr_srcd)
-			if (strchecker(ptr_srcng, ptr_srcd))
-				return (ptr_srcng);
-		ptr_srcng += 1;
-		n--;
+		if (*ptrb == *ptrl)
+			if ((strchecker(ptrb, ptrl, len)) && (n >= len))
+				return (ptrb);
+		ptrb += 1;
 	}
 	return (NULL);
 }

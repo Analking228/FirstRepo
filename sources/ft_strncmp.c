@@ -1,24 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cjani <cjani@studen.21-school.ru>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/04/30 14:04:31 by flexer            #+#    #+#             */
-/*   Updated: 2020/05/11 10:15:31 by cjani            ###   ########.fr       */
+/*   Created: 2020/05/11 09:12:29 by flexer            #+#    #+#             */
+/*   Updated: 2020/05/11 09:50:02 by cjani            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./sources/libft.h"
+#include "libft.h"
 
-void		main(void)
+int			ft_strncmp(const char *str1, const char *str2, size_t n)
 {
-	char	src[10] = "123456789";
-	char	dest[10] = "345";
-	char	*ptr;
-	printf ("src old: %s\n", src);
-	printf ("dest old: %s\n", dest);
-	ptr = strstr(src, dest);
-	printf ("%s\n", ptr);
+	unsigned char	*ptr1;
+	unsigned char	*ptr2;
+
+	ptr1 = (unsigned char *)str1;
+	ptr2 = (unsigned char *)str2;
+	while (n--)
+	{
+		if (*ptr1 != *ptr2)
+			return (*ptr1 - *ptr2);
+		ptr1 += 1;
+		ptr2 += 1;
+	}
+	return (0);
 }

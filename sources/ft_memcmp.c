@@ -6,7 +6,7 @@
 /*   By: cjani <cjani@studen.21-school.ru>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/04 13:00:45 by flexer            #+#    #+#             */
-/*   Updated: 2020/05/04 16:18:26 by cjani            ###   ########.fr       */
+/*   Updated: 2020/05/11 09:43:21 by cjani            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,8 @@ int					ft_memcmp(const void *s1, const void *s2, size_t n)
 	ptr2 = (unsigned char *)s2;
 	while (n--)
 	{
-		if (*ptr1 > *ptr2)
+		if (*ptr1 != *ptr2)
 			return ((*ptr1 - *ptr2) * 256);
-		if (*ptr1 < *ptr2)
-			return (-(*ptr2 - *ptr1) * 256);
 		ptr1 += 1;
 		ptr2 += 1;
 	}
