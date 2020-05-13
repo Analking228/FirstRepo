@@ -6,7 +6,7 @@
 /*   By: cjani <cjani@studen.21-school.ru>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/11 09:12:29 by flexer            #+#    #+#             */
-/*   Updated: 2020/05/11 09:50:02 by cjani            ###   ########.fr       */
+/*   Updated: 2020/05/13 12:32:37 by cjani            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ int			ft_strncmp(const char *str1, const char *str2, size_t n)
 	{
 		if (*ptr1 != *ptr2)
 			return (*ptr1 - *ptr2);
+		if (!ptr1)
+			return (0); 
 		ptr1 += 1;
 		ptr2 += 1;
 	}
