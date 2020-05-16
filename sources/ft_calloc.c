@@ -6,7 +6,7 @@
 /*   By: cjani <cjani@studen.21-school.ru>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/10 21:04:35 by flexer            #+#    #+#             */
-/*   Updated: 2020/05/10 21:33:40 by cjani            ###   ########.fr       */
+/*   Updated: 2020/05/13 16:08:24 by cjani            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,9 @@ void		*ft_calloc(size_t num, size_t sizeb)
 
 	if (!num || !sizeb)
 		return (NULL);
-	memptr = malloc(sizeb * (num + 1));
+	memptr = (void *)malloc(sizeb * num);
 	if (!memptr)
 		return (NULL);
+	ft_bzero(memptr, num);
 	return (memptr);
 }

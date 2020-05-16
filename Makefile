@@ -11,9 +11,6 @@ $(NAME):
 	ar rc libft.a *.o
 	ranlib libft.a
 
-so: $(NAME)
-	gcc -L *.o -shared -o libft.so -Wall -Wextra -Werror
-
 clean:
 	rm -f *.o
 

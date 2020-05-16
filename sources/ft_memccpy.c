@@ -6,7 +6,7 @@
 /*   By: cjani <cjani@studen.21-school.ru>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/03 16:56:12 by flexer            #+#    #+#             */
-/*   Updated: 2020/05/04 13:29:16 by cjani            ###   ########.fr       */
+/*   Updated: 2020/05/13 14:05:50 by cjani            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,17 +16,18 @@ void				*ft_memccpy(void *dest, const void *src, int c, size_t n)
 {
 	unsigned char	*ptrd;
 	unsigned char	*ptrs;
-	size_t			i;
+	unsigned char	ch;
 
-	i = 0;
+	ch = (unsigned char)c;
 	ptrs = (unsigned char *)src;
 	ptrd = (unsigned char *)dest;
 	while (n--)
 	{
-		ptrd[i] = ptrs[i];
-		if (ptrd[i] == c)
-			return (&ptrd[i + 1]);
-		i++;
+		*ptrd = *ptrs;
+		if (*ptrs == ch)
+			return (ptrd + 1);
+		ptrd += 1;
+		ptrs += 1;
 	}
 	return (NULL);
 }

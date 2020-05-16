@@ -6,7 +6,7 @@
 /*   By: cjani <cjani@studen.21-school.ru>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/01 14:39:50 by flexer            #+#    #+#             */
-/*   Updated: 2020/05/04 15:24:02 by cjani            ###   ########.fr       */
+/*   Updated: 2020/05/13 15:32:17 by cjani            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,6 @@ void				*ft_memset(void *dest, int c, size_t n)
 	ptr = (unsigned char *)dest;
 	ch = (unsigned char)c;
 	while (n-- != 0)
-		*ptr++ = ch;
+		*(ptr++) = ch;
 	return (dest);
 }
