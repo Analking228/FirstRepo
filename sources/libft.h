@@ -6,7 +6,7 @@
 /*   By: cjani <cjani@studen.21-school.ru>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/30 12:41:03 by flexer            #+#    #+#             */
-/*   Updated: 2020/05/11 10:13:34 by cjani            ###   ########.fr       */
+/*   Updated: 2020/05/16 11:33:32 by cjani            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,5 +45,6 @@ size_t	ft_strlcat(char *dest, const char *src, size_t size);
 void	*ft_calloc(size_t num, size_t sizeb);
 char	*ft_strdup(const char *str);
 int		ft_strncmp(const char *str1, const char *str2, size_t n);
+char	*ft_substr(char const *s, unsigned int c, size_t len);
 
 #endif
