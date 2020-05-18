@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: flexer <cjani@student.21-school.ru>        +#+  +:+       +#+        */
+/*   By: cjani <cjani@studen.21-school.ru>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/30 12:50:21 by flexer            #+#    #+#             */
-/*   Updated: 2020/05/01 14:19:28 by flexer           ###   ########.fr       */
+/*   Updated: 2020/05/17 12:58:59 by cjani            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int		polar_counter(int minus, const char *s, int i)
 	number = 0;
 	if (minus > 0)
 	{
-		while (s[i] >= 48 && s[i] <= 57)
+		while (ft_isdigit(s[i]))
 		{
 			number *= 10;
 			number += s[i] - 48;
@@ -27,7 +27,7 @@ int		polar_counter(int minus, const char *s, int i)
 		}
 	}
 	else
-		while (s[i] >= 48 && s[i] <= 57)
+		while (ft_isdigit(s[i]))
 		{
 			number *= 10;
 			number -= s[i] - 48;
@@ -43,7 +43,7 @@ int		ft_atoi(const char *s)
 
 	i = 0;
 	minus = -1;
-	while (((s[i] <= 13 && s[i] >= 9) || (s[i] == 32)) && (s[i] != '\0'))
+	while (ft_isspace(s[i]) && (s[i] != '\0'))
 		i++;
 	if (s[i] >= 48 && s[i] <= 57)
 		return (polar_counter(-minus, s, i));

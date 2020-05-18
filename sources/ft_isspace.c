@@ -1,31 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_isspace.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cjani <cjani@studen.21-school.ru>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/04/30 14:04:31 by flexer            #+#    #+#             */
-/*   Updated: 2020/05/18 16:19:25 by cjani            ###   ########.fr       */
+/*   Created: 2020/05/17 12:27:24 by flexer            #+#    #+#             */
+/*   Updated: 2020/05/17 12:57:48 by cjani            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./sources/libft.h"
-#include <stdio.h>
+#include "libft.h"
 
-void		main(void)
+int		ft_isspace(int c)
 {
-	char	*s;
-	char	**sp;
-	int		i;
-	int		j;
-
-	j = 0;
-	s = "lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse";
-	sp = ft_split(s, ' ');
-	while (*s)
-	{
-		write(1, "1", 1);
-		*s++;
-	}
+	if (c == 32 || (c >= 9 && c <= 13))
+		return (c);
+	else
+		return (0);
 }
