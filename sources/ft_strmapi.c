@@ -1,24 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cjani <cjani@studen.21-school.ru>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/04/30 14:04:31 by flexer            #+#    #+#             */
-/*   Updated: 2020/05/19 10:49:57 by cjani            ###   ########.fr       */
+/*   Created: 2020/05/19 10:59:15 by flexer            #+#    #+#             */
+/*   Updated: 2020/05/19 11:05:20 by cjani            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./sources/libft.h"
-#include <stdio.h>
+#include "libft.h"
 
-void		main(void)
+char		*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	int		num;
-	char	*s;
+	char	*str;
+	size_t	i;
 
-	num = -2;
-	s = ft_itoa(num);
-	printf("%s\n", s);
+	i = 0;
+	str = ft_strdup(s);
+	if (!str)
+		return (NULL);
+	while (str[i])
+	{
+		str[i] = (*f)(i, str[i]);
+		i++;
+	}
+	return (str);
 }
