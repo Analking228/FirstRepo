@@ -6,10 +6,13 @@
 /*   By: cjani <cjani@studen.21-school.ru>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/20 12:40:30 by flexer            #+#    #+#             */
-/*   Updated: 2020/05/20 12:41:23 by cjani            ###   ########.fr       */
+/*   Updated: 2020/05/20 13:12:49 by cjani            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <fcntl.h>
 #include "libft.h"
 
 void	ft_putnbr_fd(int n, int fd)

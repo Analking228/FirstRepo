@@ -1,22 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
+/*   ft_lstadd_front.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cjani <cjani@studen.21-school.ru>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/05/20 12:31:23 by flexer            #+#    #+#             */
-/*   Updated: 2020/05/20 13:12:46 by cjani            ###   ########.fr       */
+/*   Created: 2020/05/20 13:20:43 by flexer            #+#    #+#             */
+/*   Updated: 2020/05/20 13:26:46 by cjani            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <sys/types.h>
-#include <sys/stat.h>
-#include <fcntl.h>
 #include "libft.h"
 
-void	ft_putendl_fd(char *s, int fd)
+void		ft_lstadd_front(t_list **lst, t_list *new)
 {
-	ft_putstr_fd(s, fd);
-	ft_putchar_fd('\n', fd);
+	if (new)
+	{
+		new->next = *lst;
+		*lst = new;
+	}
 }

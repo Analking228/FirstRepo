@@ -1,22 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
+/*   ft_lstsize.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cjani <cjani@studen.21-school.ru>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/05/20 12:31:23 by flexer            #+#    #+#             */
-/*   Updated: 2020/05/20 13:12:46 by cjani            ###   ########.fr       */
+/*   Created: 2020/05/20 13:27:36 by flexer            #+#    #+#             */
+/*   Updated: 2020/05/20 13:36:55 by cjani            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <sys/types.h>
-#include <sys/stat.h>
-#include <fcntl.h>
 #include "libft.h"
 
-void	ft_putendl_fd(char *s, int fd)
+int			ft_lstsize(t_list *lst)
 {
-	ft_putstr_fd(s, fd);
-	ft_putchar_fd('\n', fd);
+	int		count;
+	t_list	*tmp;
+
+	tmp = lst;
+	count = 0;
+	if (tmp)
+	{
+		count++;
+		while (tmp->next)
+		{
+			count++;
+			tmp = tmp->next;
+		}
+	}
+	return (count);
 }

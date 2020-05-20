@@ -11,6 +11,8 @@ $(NAME):
 	ar rc libft.a *.o
 	ranlib libft.a
 
+bonus: $(NAME)
+
 clean:
 	rm -f *.o
 

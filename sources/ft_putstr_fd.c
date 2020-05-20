@@ -6,10 +6,13 @@
 /*   By: cjani <cjani@studen.21-school.ru>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/20 12:25:46 by flexer            #+#    #+#             */
-/*   Updated: 2020/05/20 12:26:57 by cjani            ###   ########.fr       */
+/*   Updated: 2020/05/20 13:12:54 by cjani            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <fcntl.h>
 #include "libft.h"
 
 void	ft_putstr_fd(char *s, int fd)
