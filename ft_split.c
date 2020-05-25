@@ -6,7 +6,7 @@
 /*   By: cjani <cjani@studen.21-school.ru>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/18 11:38:44 by flexer            #+#    #+#             */
-/*   Updated: 2020/05/25 10:29:54 by cjani            ###   ########.fr       */
+/*   Updated: 2020/05/25 21:57:50 by cjani            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,17 +51,16 @@ static char		**ft_split_split_alloc(char **sp, char *s, char c)
 	{
 		if (s[i++] != c)
 			count++;
-		if ((s[i] == c && count != 0) || (s[i] != c && s[i + 1] == '\0'))
-		{
-			sp[j] = (char *)ft_calloc(count + 1, sizeof(char));
-			if (!sp[j])
-				return (NULL);
-			count = 0;
-			j++;
-		}
+		if (s[i] != '\0')
+			if ((s[i] == c && count != 0) || (s[i] != c && s[i + 1] == '\0'))
+			{
+				sp[j] = (char *)ft_calloc(count + 2, sizeof(char));
+				if (!sp[j])
+					return (NULL);
+				count = 0;
+				j++;
+			}
 	}
-	sp[j] = (char *)ft_calloc(1, sizeof(char));
-	sp[j] = NULL;
 	return (sp);
 }
 

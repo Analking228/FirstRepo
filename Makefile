@@ -22,14 +22,14 @@ $(NAME): $(OBJ)
 	ar rcs $(NAME) $^
 	ranlib $(NAME)
 
-$(OBJ): $(SOURCE)
-	$(CC) $(CFLAGS) $^ $(HEADER)
+$(OBJ:%.o): $(SOURCE:%.c) $(HEADER)
+	$(CC) $(CFLAGS) -c $< -o $@
 
-$(BOBJ): $(SOURCE) $(BSOURCE)
-	$(CC) $(CFLAGS) $^ $(HEADER)
+$(BOBJ:%.o): $(BSOURCE:%.c) $(HEADER)
+	$(CC) $(CFLAGS) -с $< -o $@
 
-bonus: $(BOBJ)
-	ar rcs $(NAME) $(BOBJ)
+bonus: $(BOBJ) $(OBJ)
+	ar rcs $(NAME) $(BOBJ) $(OBJ)
 	ranlib $(NAME)
 
 clean:

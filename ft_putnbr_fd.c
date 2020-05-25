@@ -6,7 +6,7 @@
 /*   By: cjani <cjani@studen.21-school.ru>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/20 12:40:30 by flexer            #+#    #+#             */
-/*   Updated: 2020/05/25 11:31:16 by cjani            ###   ########.fr       */
+/*   Updated: 2020/05/25 21:43:22 by cjani            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ void		ft_putnbr_fd(int n, int fd)
 	}
 	if (minus)
 		str[i] = 45;
+	str[++i] = '\0';
 	ft_revstr(str);
 	ft_putstr_fd(str, fd);
 }
