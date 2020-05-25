@@ -6,7 +6,7 @@
 /*   By: cjani <cjani@studen.21-school.ru>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/16 11:31:21 by flexer            #+#    #+#             */
-/*   Updated: 2020/05/22 13:31:03 by cjani            ###   ########.fr       */
+/*   Updated: 2020/05/25 17:44:04 by cjani            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ char				*ft_substr(char const *s, unsigned int c, size_t len)
 			ptrd = (char *)ft_calloc(substrl + 1, sizeof(char));
 		if (!ptrd)
 		{
-			free (ptrd);
+			free(ptrd);
 			return (NULL);
 		}
 		ft_allocation(ptrs, ptrd, len, substrl);

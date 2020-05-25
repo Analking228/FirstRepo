@@ -13,6 +13,7 @@ BSOURCE = ft_lstnew.c ft_lstsize.c ft_lstadd_back.c ft_lstadd_front.c ft_lstclea
 			ft_lstdelone.c ft_lstiter.c ft_lstlast.c ft_lstmap.c
 OBJ = $(SOURCE:%.c=%.o)
 BOBJ = $(BSOURCE:.c=.o)
+HEADER = libft.h
 NAME = libft.a
 
 all: $(NAME)
@@ -22,10 +23,10 @@ $(NAME): $(OBJ)
 	ranlib $(NAME)
 
 $(OBJ): $(SOURCE)
-	$(CC) $(CFLAGS) $(SOURCE)
+	$(CC) $(CFLAGS) $(SOURCE) $(HEADER)
 
 $(BOBJ): $(BSOURCE)
-	$(CC) $(CFLAGS) $(SOURCE) $(BSOURCE)
+	$(CC) $(CFLAGS) $(SOURCE) $(BSOURCE) $(HEADER)
 
 bonus: $(BOBJ)
 	ar rcs $(NAME) $(BOBJ)

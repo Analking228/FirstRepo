@@ -6,7 +6,7 @@
 /*   By: cjani <cjani@studen.21-school.ru>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/20 13:20:43 by flexer            #+#    #+#             */
-/*   Updated: 2020/05/22 12:55:12 by cjani            ###   ########.fr       */
+/*   Updated: 2020/05/25 17:45:01 by cjani            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@ void		ft_lstadd_front(t_list **lst, t_list *new)
 	{
 		if (*lst)
 		{
-		new->next = *lst;
-		*lst = new;
+			new->next = *lst;
+			*lst = new;
 		}
 		else
 			*lst = new;
