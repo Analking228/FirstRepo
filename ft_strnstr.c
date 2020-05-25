@@ -6,7 +6,7 @@
 /*   By: cjani <cjani@studen.21-school.ru>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/05 17:31:26 by flexer            #+#    #+#             */
-/*   Updated: 2020/05/11 10:37:50 by cjani            ###   ########.fr       */
+/*   Updated: 2020/05/25 10:45:46 by cjani            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,12 +42,13 @@ char		*ft_strnstr(const char *big, const char *little, size_t n)
 	len = ft_strlen(ptrl);
 	if (!*ptrl || !len)
 		return (ptrb);
-	while (n--)
+	while (n)
 	{
 		if (*ptrb == *ptrl)
 			if ((strchecker(ptrb, ptrl, len)) && (n >= len))
 				return (ptrb);
 		ptrb += 1;
+		n--;
 	}
 	return (NULL);
 }

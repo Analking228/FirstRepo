@@ -1,21 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
+/*   ft_lstmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cjani <cjani@studen.21-school.ru>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/05/20 12:40:30 by flexer            #+#    #+#             */
-/*   Updated: 2020/05/20 13:12:49 by cjani            ###   ########.fr       */
+/*   Created: 2020/05/21 18:20:53 by flexer            #+#    #+#             */
+/*   Updated: 2020/05/22 12:58:59 by cjani            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <sys/types.h>
-#include <sys/stat.h>
-#include <fcntl.h>
 #include "libft.h"
 
-void	ft_putnbr_fd(int n, int fd)
+t_list			*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
-	ft_putstr_fd(ft_itoa(n), fd);
+	t_list	*first;
+	t_list	*tmp;
+
+	first = NULL;
+	while (lst)
+	{
+		tmp = ft_lstnew(f(lst->content));
+		if (!tmp)
+		{
+			ft_lstclear(&first, del);
+			return (NULL);
+		}
+		ft_lstadd_back(&first, tmp);
+		lst = lst->next;
+	}
+	return (first);
 }

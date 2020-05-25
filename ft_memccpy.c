@@ -1,33 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memmove.c                                       :+:      :+:    :+:   */
+/*   ft_memccpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cjani <cjani@studen.21-school.ru>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/05/03 17:47:54 by flexer            #+#    #+#             */
-/*   Updated: 2020/05/13 14:25:27 by cjani            ###   ########.fr       */
+/*   Created: 2020/05/03 16:56:12 by flexer            #+#    #+#             */
+/*   Updated: 2020/05/22 13:02:25 by cjani            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void				*ft_memmove(void *dest, const void *src, size_t n)
+void				*ft_memccpy(void *dest, const void *src, int c, size_t n)
 {
 	unsigned char	*ptrd;
 	unsigned char	*ptrs;
+	unsigned char	ch;
 
-	ptrd = (unsigned char *)dest;
+	ch = (unsigned char)c;
 	ptrs = (unsigned char *)src;
-	if (ptrd < ptrs)
+	ptrd = (unsigned char *)dest;
+	if (ptrs && ptrd)
 		while (n--)
-			*ptrd++ = *ptrs++;
-	else
-	{
-		ptrd += n - 1;
-		ptrs += n - 1;
-		while (n--)
-			*ptrd-- = *ptrs--;
-	}
-	return (dest);
+		{
+			*ptrd = *ptrs;
+			if (*ptrs == ch)
+				return (ptrd + 1);
+			ptrd += 1;
+			ptrs += 1;
+		}
+	return (NULL);
 }

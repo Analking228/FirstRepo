@@ -1,24 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cjani <cjani@studen.21-school.ru>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/04/30 14:04:31 by flexer            #+#    #+#             */
-/*   Updated: 2020/05/19 10:49:57 by cjani            ###   ########.fr       */
+/*   Created: 2020/05/02 15:49:09 by flexer            #+#    #+#             */
+/*   Updated: 2020/05/25 10:50:48 by cjani            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./sources/libft.h"
-#include <stdio.h>
+#include "libft.h"
 
-void		main(void)
+void				*ft_memcpy(void *dest, const void *src, size_t n)
 {
-	int		num;
-	char	*s;
+	unsigned char	*ptrd;
+	unsigned char	*ptrs;
+	size_t			i;
 
-	num = -2;
-	s = ft_itoa(num);
-	printf("%s\n", s);
+	if (!dest || !src)
+		return (NULL);
+	i = 0;
+	ptrd = (unsigned char *)dest;
+	ptrs = (unsigned char *)src;
+	while (n-- != 0)
+	{
+		ptrd[i] = ptrs[i];
+		i++;
+	}
+	return (ptrd);
 }

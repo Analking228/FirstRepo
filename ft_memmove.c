@@ -1,32 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncmp.c                                       :+:      :+:    :+:   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cjani <cjani@studen.21-school.ru>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/05/11 09:12:29 by flexer            #+#    #+#             */
-/*   Updated: 2020/05/13 16:20:04 by cjani            ###   ########.fr       */
+/*   Created: 2020/05/03 17:47:54 by flexer            #+#    #+#             */
+/*   Updated: 2020/05/25 10:51:24 by cjani            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int			ft_strncmp(const char *str1, const char *str2, size_t n)
+void				*ft_memmove(void *dest, const void *src, size_t n)
 {
-	unsigned char	*ptr1;
-	unsigned char	*ptr2;
+	unsigned char	*ptrd;
+	unsigned char	*ptrs;
 
-	ptr1 = (unsigned char *)str1;
-	ptr2 = (unsigned char *)str2;
-	while (n--)
+	if (!dest || !src)
+		return (NULL);
+	ptrd = (unsigned char *)dest;
+	ptrs = (unsigned char *)src;
+	if (ptrd < ptrs)
+		while (n--)
+			*ptrd++ = *ptrs++;
+	else
 	{
-		if (*ptr1 != *ptr2)
-			return (*ptr1 - *ptr2);
-		if (!ptr1)
-			return (0);
-		ptr1 += 1;
-		ptr2 += 1;
+		ptrd += n - 1;
+		ptrs += n - 1;
+		while (n--)
+			*ptrd-- = *ptrs--;
 	}
-	return (0);
+	return (dest);
 }

@@ -1,26 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstnew.c                                        :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cjani <cjani@studen.21-school.ru>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/05/20 13:14:02 by flexer            #+#    #+#             */
-/*   Updated: 2020/05/20 13:19:38 by cjani            ###   ########.fr       */
+/*   Created: 2020/05/10 21:56:29 by flexer            #+#    #+#             */
+/*   Updated: 2020/05/25 11:18:37 by cjani            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_list		*ft_lstnew(void *content)
+char		*ft_strdup(const char *str)
 {
-	t_list	*tmp;
+	char	*newstr;
+	size_t	len;
 
-	tmp = malloc(sizeof(t_list));
-	if (tmp)
-	{
-		tmp->content = content;
-		tmp->next = NULL;
-	}
-	return (tmp);
+	len = ft_strlen(str);
+	newstr = (char *)ft_calloc(len + 1, sizeof(char));
+	if (!newstr)
+		return (NULL);
+	ft_memcpy(newstr, str, len + 1);
+	newstr[len + 1] = '\0';
+	return (newstr);
 }

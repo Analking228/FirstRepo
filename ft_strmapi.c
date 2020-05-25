@@ -1,30 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcpy.c                                        :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cjani <cjani@studen.21-school.ru>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/05/02 15:49:09 by flexer            #+#    #+#             */
-/*   Updated: 2020/05/04 13:29:09 by cjani            ###   ########.fr       */
+/*   Created: 2020/05/19 10:59:15 by flexer            #+#    #+#             */
+/*   Updated: 2020/05/25 11:17:02 by cjani            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void				*ft_memcpy(void *dest, const void *src, size_t n)
+char		*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	unsigned char	*ptrd;
-	unsigned char	*ptrs;
-	size_t			i;
+	char	*str;
+	size_t	i;
 
 	i = 0;
-	ptrd = (unsigned char *)dest;
-	ptrs = (unsigned char *)src;
-	while (n-- != 0)
+	str = ft_strdup(s);
+	if (!str)
+		return (NULL);
+	while (str[i])
 	{
-		ptrd[i] = ptrs[i];
+		str[i] = (*f)(i, str[i]);
 		i++;
 	}
-	return (ptrd);
+	return (str);
 }

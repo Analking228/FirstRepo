@@ -1,15 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_itoa.c                                          :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cjani <cjani@studen.21-school.ru>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/05/19 10:11:41 by flexer            #+#    #+#             */
-/*   Updated: 2020/05/19 10:49:39 by cjani            ###   ########.fr       */
+/*   Created: 2020/05/20 12:40:30 by flexer            #+#    #+#             */
+/*   Updated: 2020/05/25 11:31:16 by cjani            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <fcntl.h>
 #include "libft.h"
 
 static int	ft_abs(int n)
@@ -34,12 +37,13 @@ static char	*ft_revstr(char *str)
 		str[l - i - 1] = tmp;
 		i++;
 	}
+	str[ft_strlen(str)] = '\0';
 	return (str);
 }
 
-char		*ft_itoa(int n)
+void		ft_putnbr_fd(int n, int fd)
 {
-	char	*str;
+	char	str[13];
 	size_t	i;
 	int		minus;
 
@@ -47,9 +51,6 @@ char		*ft_itoa(int n)
 	minus = 0;
 	if (n < 0)
 		minus++;
-	str = (char *)ft_calloc(11 + minus, sizeof(char));
-	if (!str)
-		return (NULL);
 	str[i] = 48;
 	while (n)
 	{
@@ -59,5 +60,5 @@ char		*ft_itoa(int n)
 	if (minus)
 		str[i] = 45;
 	ft_revstr(str);
-	return (str);
+	ft_putstr_fd(str, fd);
 }

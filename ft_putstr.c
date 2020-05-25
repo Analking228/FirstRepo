@@ -1,27 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdub.c                                        :+:      :+:    :+:   */
+/*   ft_putstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cjani <cjani@studen.21-school.ru>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/05/10 21:56:29 by flexer            #+#    #+#             */
-/*   Updated: 2020/05/13 16:10:21 by cjani            ###   ########.fr       */
+/*   Created: 2020/04/30 14:41:15 by flexer            #+#    #+#             */
+/*   Updated: 2020/05/22 13:06:22 by cjani            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char		*ft_strdup(const char *str)
+void	ft_putstr(char *s)
 {
-	char	*newstr;
-	size_t	len;
-
-	len = ft_strlen(str);
-	newstr = (char *)ft_calloc(len, sizeof(char));
-	if (!newstr)
-		return (NULL);
-	ft_memcpy(newstr, str, len);
-	newstr[len + 1] = '\0';
-	return (newstr);
+	write(1, s, ft_strlen(s));
 }

@@ -1,30 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strmapi.c                                       :+:      :+:    :+:   */
+/*   ft_lstlast.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cjani <cjani@studen.21-school.ru>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/05/19 10:59:15 by flexer            #+#    #+#             */
-/*   Updated: 2020/05/19 11:05:20 by cjani            ###   ########.fr       */
+/*   Created: 2020/05/21 12:44:22 by flexer            #+#    #+#             */
+/*   Updated: 2020/05/21 17:56:10 by cjani            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char		*ft_strmapi(char const *s, char (*f)(unsigned int, char))
+t_list		*ft_lstlast(t_list *lst)
 {
-	char	*str;
-	size_t	i;
+	t_list	*tmp;
 
-	i = 0;
-	str = ft_strdup(s);
-	if (!str)
-		return (NULL);
-	while (str[i])
+	tmp = NULL;
+	if (lst)
 	{
-		str[i] = (*f)(i, str[i]);
-		i++;
+		tmp = lst;
+		while (tmp->next)
+			tmp = tmp->next;
 	}
-	return (str);
+	return (tmp);
 }
