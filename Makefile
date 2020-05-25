@@ -12,21 +12,21 @@ SOURCE = ft_isspace.c ft_putchar_fd.c ft_strlcat.c ft_tolower.c \
 BSOURCE = ft_lstnew.c ft_lstsize.c ft_lstadd_back.c ft_lstadd_front.c ft_lstclear.c \
 			ft_lstdelone.c ft_lstiter.c ft_lstlast.c ft_lstmap.c
 OBJ = $(SOURCE:%.c=%.o)
-BOBJ = $(BSOURCE:.c=.o)
+BOBJ = $(BSOURCE:%.c=%.o)
 HEADER = libft.h
 NAME = libft.a
 
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	ar rcs $(NAME) $(OBJ)
+	ar rcs $(NAME) $^
 	ranlib $(NAME)
 
 $(OBJ): $(SOURCE)
-	$(CC) $(CFLAGS) $(SOURCE) $(HEADER)
+	$(CC) $(CFLAGS) $^ $(HEADER)
 
-$(BOBJ): $(BSOURCE)
-	$(CC) $(CFLAGS) $(SOURCE) $(BSOURCE) $(HEADER)
+$(BOBJ): $(SOURCE) $(BSOURCE)
+	$(CC) $(CFLAGS) $^ $(HEADER)
 
 bonus: $(BOBJ)
 	ar rcs $(NAME) $(BOBJ)
