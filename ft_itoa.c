@@ -6,7 +6,7 @@
 /*   By: cjani <cjani@studen.21-school.ru>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/19 10:11:41 by flexer            #+#    #+#             */
-/*   Updated: 2020/05/25 11:24:27 by cjani            ###   ########.fr       */
+/*   Updated: 2020/05/26 22:53:30 by cjani            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ char		*ft_itoa(int n)
 	i = 0;
 	minus = 0;
 	if (n < 0)
-		minus++;
+		minus = 1;
 	str = (char *)ft_calloc(12 + minus, sizeof(char));
 	if (!str)
 		return (NULL);

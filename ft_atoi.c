@@ -6,7 +6,7 @@
 /*   By: cjani <cjani@studen.21-school.ru>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/30 12:50:21 by flexer            #+#    #+#             */
-/*   Updated: 2020/05/17 12:58:59 by cjani            ###   ########.fr       */
+/*   Updated: 2020/05/26 22:37:52 by cjani            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ int		ft_atoi(const char *s)
 	minus = -1;
 	while (ft_isspace(s[i]) && (s[i] != '\0'))
 		i++;
-	if (s[i] >= 48 && s[i] <= 57)
+	if (ft_isdigit(s[i]))
 		return (polar_counter(-minus, s, i));
 	else if (s[i] == 43)
 		return (polar_counter(-minus, s, ++i));
