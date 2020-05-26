@@ -19,8 +19,8 @@ NAME = libft.a
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	ar rcs $(NAME) $^
-	ranlib $(NAME)
+	ar rcs $@ $^
+	ranlib $@
 
 $(OBJ:%.o): $(SOURCE:%.c) $(HEADER)
 	$(CC) $(CFLAGS) -c $< -o $@
@@ -29,7 +29,7 @@ $(BOBJ:%.o): $(BSOURCE:%.c) $(HEADER)
 	$(CC) $(CFLAGS) -с $< -o $@
 
 bonus: $(BOBJ) $(OBJ)
-	ar rcs $(NAME) $(BOBJ) $(OBJ)
+	ar rcs $(NAME) $^
 	ranlib $(NAME)
 
 clean:
