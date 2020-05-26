@@ -6,7 +6,7 @@
 /*   By: cjani <cjani@studen.21-school.ru>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/18 11:38:44 by flexer            #+#    #+#             */
-/*   Updated: 2020/05/26 23:30:27 by cjani            ###   ########.fr       */
+/*   Updated: 2020/05/26 23:46:25 by cjani            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ static char		**ft_split_alloc(char *s, char c)
 				splitc++;
 		i++;
 	}
-	printf("units: %ld\n", splitc);
 	split = (char **)ft_calloc(splitc, sizeof(s));
 	if (!split)
 		return (NULL);
@@ -110,7 +109,6 @@ void			ft_free_mem(char **split, char *s, char c)
 				splitc++;
 		i++;
 	}
-	splitc++;
 	while (j < splitc)
 	{
 		free(split[j]);
