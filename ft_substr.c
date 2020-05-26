@@ -6,7 +6,7 @@
 /*   By: cjani <cjani@studen.21-school.ru>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/16 11:31:21 by flexer            #+#    #+#             */
-/*   Updated: 2020/05/25 17:44:04 by cjani            ###   ########.fr       */
+/*   Updated: 2020/05/26 21:53:53 by cjani            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,5 +59,5 @@ char				*ft_substr(char const *s, unsigned int c, size_t len)
 		ft_allocation(ptrs, ptrd, len, substrl);
 		return (ptrd);
 	}
-	return (NULL);
+	return (ft_strdup(""));
 }

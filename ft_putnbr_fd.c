@@ -6,7 +6,7 @@
 /*   By: cjani <cjani@studen.21-school.ru>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/20 12:40:30 by flexer            #+#    #+#             */
-/*   Updated: 2020/05/25 21:43:22 by cjani            ###   ########.fr       */
+/*   Updated: 2020/05/26 22:16:05 by cjani            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,51 +15,23 @@
 #include <fcntl.h>
 #include "libft.h"
 
-static int	ft_abs(int n)
-{
-	if (n < 0)
-		return (-n);
-	return (n);
-}
-
-static char	*ft_revstr(char *str)
-{
-	size_t	l;
-	size_t	i;
-	char	tmp;
-
-	l = ft_strlen(str);
-	i = 0;
-	while (i < (l / 2))
-	{
-		tmp = str[i];
-		str[i] = str[l - i - 1];
-		str[l - i - 1] = tmp;
-		i++;
-	}
-	str[ft_strlen(str)] = '\0';
-	return (str);
-}
-
 void		ft_putnbr_fd(int n, int fd)
 {
-	char	str[13];
-	size_t	i;
-	int		minus;
-
-	i = 0;
-	minus = 0;
-	if (n < 0)
-		minus++;
-	str[i] = 48;
-	while (n)
+	if (n == -2147483648)
 	{
-		str[i++] = 48 + ft_abs(n % 10);
-		n /= 10;
+		ft_putstr_fd("-2147483648", fd);
+		return ;
 	}
-	if (minus)
-		str[i] = 45;
-	str[++i] = '\0';
-	ft_revstr(str);
-	ft_putstr_fd(str, fd);
+	if (n < 0)
+	{
+		ft_putchar_fd('-', fd);
+		n *= -1;
+	}
+	if (n > 9)
+	{
+		ft_putnbr_fd(n / 10, fd);
+		ft_putnbr_fd(n % 10, fd);
+	}
+	else
+		ft_putchar_fd(n + 48, fd);
 }
