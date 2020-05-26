@@ -6,7 +6,7 @@
 /*   By: cjani <cjani@studen.21-school.ru>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/21 14:03:11 by flexer            #+#    #+#             */
-/*   Updated: 2020/05/21 14:23:24 by cjani            ###   ########.fr       */
+/*   Updated: 2020/05/26 23:40:07 by cjani            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,11 @@
 
 void		ft_lstiter(t_list *lst, void (*f)(void *))
 {
-	if (lst)
-		while (lst)
-		{
-			f(lst->content);
-			lst = lst->next;
-		}
+	if (!f)
+		return ;
+	while (lst)
+	{
+		f(lst->content);
+		lst = lst->next;
+	}
 }
