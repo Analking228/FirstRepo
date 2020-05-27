@@ -6,7 +6,7 @@
 /*   By: cjani <cjani@studen.21-school.ru>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/17 12:27:00 by flexer            #+#    #+#             */
-/*   Updated: 2020/05/22 13:31:46 by cjani            ###   ########.fr       */
+/*   Updated: 2020/05/27 21:55:36 by cjani            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@ char		*ft_strtrim(char const *str, char const *set)
 	size_t	end;
 
 	bgn = 0;
+	if (!str || !set)
+		return (NULL);
 	end = ft_strlen(str);
 	i = 0;
 	while (str[bgn] && ft_inset(str[bgn], set))

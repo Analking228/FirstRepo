@@ -6,7 +6,7 @@
 /*   By: cjani <cjani@studen.21-school.ru>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/04 12:29:28 by flexer            #+#    #+#             */
-/*   Updated: 2020/05/22 13:03:12 by cjani            ###   ########.fr       */
+/*   Updated: 2020/05/27 21:30:04 by cjani            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,11 @@ void				*ft_memchr(const void *arr, int c, size_t n)
 
 	ch = (unsigned char)c;
 	ptra = (unsigned char *)arr;
-	if (ptra)
-		while (n--)
-		{
-			if (*ptra == ch)
-				return (ptra);
-			ptra += 1;
-		}
+	while (n--)
+	{
+		if (*ptra == ch)
+			return (ptra);
+		ptra += 1;
+	}
 	return (NULL);
 }

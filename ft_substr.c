@@ -6,7 +6,7 @@
 /*   By: cjani <cjani@studen.21-school.ru>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/16 11:31:21 by flexer            #+#    #+#             */
-/*   Updated: 2020/05/26 21:53:53 by cjani            ###   ########.fr       */
+/*   Updated: 2020/05/27 22:03:52 by cjani            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,8 @@ char				*ft_substr(char const *s, unsigned int c, size_t len)
 	char			*ptrs;
 	char			*ptrd;
 
+	if (!s)
+		return (NULL);
 	ptrs = (char *)s;
 	substrl = ft_strlen(ptrs);
 	if (substrl > c)
