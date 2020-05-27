@@ -6,7 +6,7 @@
 /*   By: cjani <cjani@studen.21-school.ru>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/18 11:38:44 by flexer            #+#    #+#             */
-/*   Updated: 2020/05/27 12:03:52 by cjani            ###   ########.fr       */
+/*   Updated: 2020/05/27 21:09:56 by cjani            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,13 @@ static char		**ft_split_alloc(char *s, char c)
 	return (split);
 }
 
+static void		ft_free(char **sp, size_t j)
+{
+	while (j--)
+		free(sp[j]);
+	free(sp);
+}
+
 static char		**ft_split_split_alloc(char **sp, char *s, char c)
 {
 	size_t		i;
@@ -44,17 +51,17 @@ static char		**ft_split_split_alloc(char **sp, char *s, char c)
 	count = 0;
 	i = 0;
 	j = 0;
-	while (s[i] && s[i] == c)
-		i++;
 	while (s[i])
 	{
 		if (s[i] != c)
 			count++;
 		if ((s[i] == c && count != 0) || (s[i] != c && s[i + 1] == '\0'))
 		{
-			sp[j] = (char *)ft_calloc(count + 1, sizeof(char));
-			if (!sp[j])
+			if (!(sp[j] = (char *)ft_calloc(count + 1, sizeof(char))))
+			{
+				ft_free(sp, j);
 				return (NULL);
+			}
 			count = 0;
 			j++;
 		}
@@ -91,29 +98,6 @@ char			**ft_split_injection(char **sp, char *s, char c)
 	return (sp);
 }
 
-void			ft_free_mem(char **split, char *s, char c)
-{
-	size_t		i;
-	size_t		splitc;
-
-	i = 0;
-	splitc = 0;
-	if (s[i] != c)
-		splitc++;
-	while (s[i])
-	{
-		if (s[i] == c)
-			if ((s[i + 1] != c) && (s[i + 1] != '\0'))
-				splitc++;
-		i++;
-	}
-	while (splitc--)
-	{
-		if (split[splitc])
-			free(split[splitc]);
-	}
-}
-
 char			**ft_split(char const *s, char c)
 {
 	char		**split;
@@ -123,12 +107,11 @@ char			**ft_split(char const *s, char c)
 		return (NULL);
 	str = (char *)s;
 	split = ft_split_alloc(str, c);
-	split = ft_split_split_alloc(split, str, c);
-	split = ft_split_injection(split, str, c);
 	if (!split)
-	{
-		ft_free_mem(split, str, c);
 		return (NULL);
-	}
+	split = ft_split_split_alloc(split, str, c);
+	if (!split)
+		return (NULL);
+	split = ft_split_injection(split, str, c);
 	return (split);
 }
