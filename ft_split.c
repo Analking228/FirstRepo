@@ -6,11 +6,12 @@
 /*   By: cjani <cjani@studen.21-school.ru>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/18 11:38:44 by flexer            #+#    #+#             */
-/*   Updated: 2020/05/27 00:18:44 by cjani            ###   ########.fr       */
+/*   Updated: 2020/05/27 11:56:38 by cjani            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdio.h> // delete
 
 static char		**ft_split_alloc(char *s, char c)
 {
@@ -29,7 +30,8 @@ static char		**ft_split_alloc(char *s, char c)
 				splitc++;
 		i++;
 	}
-	split = (char **)ft_calloc(splitc, sizeof(s));
+	printf("unit splits: %ld\n", splitc + 1);//delete
+	split = (char **)ft_calloc(splitc + 1, sizeof(s));
 	if (!split)
 		return (NULL);
 	return (split);
@@ -48,17 +50,18 @@ static char		**ft_split_split_alloc(char **sp, char *s, char c)
 		i++;
 	while (s[i])
 	{
-		if (s[i++] != c)
+		if (s[i] != c)
 			count++;
-		if (s[i] != '\0')
-			if ((s[i] == c && count != 0) || (s[i] != c && s[i + 1] == '\0'))
-			{
-				sp[j] = (char *)ft_calloc(count + 1, sizeof(char));
-				if (!sp[j])
-					return (NULL);
-				count = 0;
-				j++;
-			}
+		if ((s[i] == c && count != 0) || (s[i] != c && s[i + 1] == '\0'))
+		{
+			printf("str splits: %ld\n", count + 1);//delete
+			sp[j] = (char *)ft_calloc(count + 1, sizeof(char));
+			if (!sp[j])
+				return (NULL);
+			count = 0;
+			j++;
+		}
+		i++;
 	}
 	sp[j] = NULL;
 	return (sp);
@@ -78,6 +81,7 @@ char			**ft_split_injection(char **sp, char *s, char c)
 		if (s[i] == c && k != 0)
 		{
 			sp[j][k] = '\0';
+			printf("string: %s\n", sp[j]);//delete
 			j++;
 			k = 0;
 		}
@@ -109,7 +113,8 @@ void			ft_free_mem(char **split, char *s, char c)
 	}
 	while (splitc--)
 	{
-		free(split[splitc]);
+		if (split[splitc])
+			free(split[splitc]);
 	}
 }
 
