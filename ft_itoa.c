@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: flexer <cjani@student.21-school.ru>        +#+  +:+       +#+        */
+/*   By: cjani <cjani@studen.21-school.ru>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/27 13:46:58 by flexer            #+#    #+#             */
-/*   Updated: 2020/05/27 13:47:01 by flexer           ###   ########.fr       */
+/*   Updated: 2020/05/27 18:32:05 by cjani            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,9 @@ static int	ft_len(int n)
 {
 	int		len;
 
-	len = 1;
+	len = 0;
+	if (!n)
+		return (1);
 	while (n)
 	{
 		n = n / 10;
