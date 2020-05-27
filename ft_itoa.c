@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cjani <cjani@studen.21-school.ru>          +#+  +:+       +#+        */
+/*   By: flexer <cjani@student.21-school.ru>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/05/19 10:11:41 by flexer            #+#    #+#             */
-/*   Updated: 2020/05/26 22:53:30 by cjani            ###   ########.fr       */
+/*   Created: 2020/05/27 13:46:58 by flexer            #+#    #+#             */
+/*   Updated: 2020/05/27 13:47:01 by flexer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,19 @@ static int	ft_abs(int n)
 	if (n < 0)
 		return (-n);
 	return (n);
+}
+
+static int	ft_len(int n)
+{
+	int		len;
+
+	len = 1;
+	while (n)
+	{
+		n = n / 10;
+		len++;
+	}
+	return (len);
 }
 
 static char	*ft_revstr(char *str)
@@ -40,15 +53,17 @@ static char	*ft_revstr(char *str)
 
 char		*ft_itoa(int n)
 {
-	char	*str;
-	size_t	i;
+	int		numlen;
 	int		minus;
+	char	*str;
+	int		i;
 
 	i = 0;
 	minus = 0;
 	if (n < 0)
 		minus = 1;
-	str = (char *)ft_calloc(12 + minus, sizeof(char));
+	numlen = minus + ft_len(n);
+	str = (char *)ft_calloc(numlen + 1, sizeof(char));
 	if (!str)
 		return (NULL);
 	str[i] = 48;
@@ -59,6 +74,7 @@ char		*ft_itoa(int n)
 	}
 	if (minus)
 		str[i] = 45;
+	str[++i] = '\0';
 	ft_revstr(str);
 	return (str);
 }
