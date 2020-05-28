@@ -6,7 +6,7 @@
 /*   By: cjani <cjani@studen.21-school.ru>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/03 17:47:54 by flexer            #+#    #+#             */
-/*   Updated: 2020/05/27 23:17:13 by cjani            ###   ########.fr       */
+/*   Updated: 2020/05/28 15:30:45 by cjani            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,6 @@ void				*ft_memmove(void *dest, const void *src, size_t n)
 	unsigned char	*ptrd;
 	unsigned char	*ptrs;
 
-	if (!dest || !src)
-		return (dest);
 	ptrd = (unsigned char *)dest;
 	ptrs = (unsigned char *)src;
 	if (ptrd < ptrs)
