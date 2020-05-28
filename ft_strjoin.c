@@ -6,7 +6,7 @@
 /*   By: cjani <cjani@studen.21-school.ru>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/17 11:12:01 by flexer            #+#    #+#             */
-/*   Updated: 2020/05/17 12:17:31 by cjani            ###   ########.fr       */
+/*   Updated: 2020/05/27 22:02:42 by cjani            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ char		*ft_strjoin(char const *prestr, char const *sufstr)
 	size_t	j;
 	char	*newptr;
 
-	if (!prestr && !sufstr)
+	if (!prestr || !sufstr)
 		return (NULL);
 	i = 0;
 	j = 0;
