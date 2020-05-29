@@ -40,8 +40,4 @@ fclean: clean
 
 re: fclean all
 
-so:
-	$(CC) $(CFLAGS) -fPIC -c $(SOURCE) $(BSOURCE) $(HEADER)
-	$(CC) -shared -o libft.so $(OBJ) $(BOBJ) $(HEADER)
-
 .PHONY: all clean fclean re bonus
