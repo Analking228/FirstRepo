@@ -6,7 +6,7 @@
 /*   By: cjani <cjani@studen.21-school.ru>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/27 13:46:58 by flexer            #+#    #+#             */
-/*   Updated: 2020/05/27 18:32:05 by cjani            ###   ########.fr       */
+/*   Updated: 2020/05/28 16:18:25 by cjani            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,8 @@ static int	ft_len(int n)
 
 static char	*ft_revstr(char *str)
 {
-	size_t	l;
-	size_t	i;
+	int	l;
+	int	i;
 	char	tmp;
 
 	l = ft_strlen(str);
