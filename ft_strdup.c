@@ -6,7 +6,7 @@
 /*   By: cjani <cjani@studen.21-school.ru>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/10 21:56:29 by flexer            #+#    #+#             */
-/*   Updated: 2020/05/25 11:18:37 by cjani            ###   ########.fr       */
+/*   Updated: 2020/06/04 14:30:21 by cjani            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ char		*ft_strdup(const char *str)
 	newstr = (char *)ft_calloc(len + 1, sizeof(char));
 	if (!newstr)
 		return (NULL);
-	ft_memcpy(newstr, str, len + 1);
-	newstr[len + 1] = '\0';
+	ft_strlcpy(newstr, str, len);
 	return (newstr);
 }
