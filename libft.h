@@ -12,9 +12,15 @@
 
 #ifndef LIBFT_H
 # define LIBFT_H
+
 # include <unistd.h>
-# include <string.h>
 # include <stdlib.h>
+
+# define ADD 1
+# define REMOVE 0
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 20
+# endif
 
 void				ft_putchar(char c);
 void				ft_putstr(char *s);
@@ -70,5 +76,10 @@ void				ft_lstclear(t_list **lst, void (*del)(void*));
 void				ft_lstiter(t_list *lst, void (*f)(void *));
 t_list				*ft_lstmap(t_list *lst, void *(*f)(void *),
 	void (*del)(void *));
+int					get_next_line(int fd, char **line);
+void				free_mm(void *ptr);
+void				*malloc_mm(size_t size);
+void				*calloc_mm(size_t nmem, size_t size);
+void				mem_manager(void *ptr, int action);
 
 #endif
