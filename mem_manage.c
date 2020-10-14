@@ -3,34 +3,34 @@
 /*                                                        :::      ::::::::   */
 /*   mem_manage.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ccaptain <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: cjani <cjani@studen.21-school.ru>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/09/27 20:36:55 by ccaptain          #+#    #+#             */
-/*   Updated: 2020/09/27 20:37:55 by ccaptain         ###   ########.fr       */
+/*   Created: 2020/06/10 20:09:29 by flexer            #+#    #+#             */
+/*   Updated: 2020/06/22 18:56:48 by cjani            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void		free_mm(void *ptr)
+void		free_mem(void *ptr)
 {
 	mem_manager(ptr, REMOVE);
 }
 
-void		*malloc_mm(size_t size)
+void		*malloc_mem(size_t sizeb)
 {
 	void	*ptr;
 
-	ptr = malloc(size);
+	ptr = malloc(sizeb);
 	mem_manager(ptr, ADD);
 	return (ptr);
 }
 
-void		*calloc_mm(size_t nmem, size_t size)
+void		*calloc_mem(size_t num, size_t sizeb)
 {
 	void	*ptr;
 
-	ptr = ft_calloc(nmem, size);
+	ptr = ft_calloc(num, sizeb);
 	mem_manager(ptr, ADD);
 	return (ptr);
 }

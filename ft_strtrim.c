@@ -39,7 +39,7 @@ char		*ft_strtrim(char const *str, char const *set)
 		bgn++;
 	while (end > bgn && ft_inset(str[end - 1], set))
 		end--;
-	newstr = (char*)ft_calloc((end - bgn + 1), sizeof(char));
+	newstr = (char*)calloc_mem((end - bgn + 1), sizeof(char));
 	if (!newstr)
 		return (NULL);
 	while (bgn < end)

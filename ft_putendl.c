@@ -1,25 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cjani <cjani@studen.21-school.ru>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/05/10 21:04:35 by flexer            #+#    #+#             */
-/*   Updated: 2020/05/27 11:22:03 by cjani            ###   ########.fr       */
+/*   Created: 2020/05/20 12:40:30 by flexer            #+#    #+#             */
+/*   Updated: 2020/05/26 22:16:05 by cjani            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void		*ft_calloc(size_t num, size_t sizeb)
+void	ft_putendl(char *s)
 {
-	void	*memptr;
-
-	if (num != 0 && sizeb != 0 && sizeb * num / num != sizeb)
-		return (NULL);
-	if (!(memptr = (void *)malloc(sizeb * num)))
-		return (NULL);
-	ft_bzero(memptr, num * sizeb);
-	return (memptr);
+	if (s)
+	{
+		ft_putstr(s);
+		write(1, "\n", 1);
+	}
 }

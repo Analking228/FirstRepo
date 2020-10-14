@@ -12,68 +12,53 @@
 
 #include "libft.h"
 
-static char	*add_buf(char *line, char *buf)
+static int	check_over(char *over, char **new_line_ptr, char **line)
 {
-	char *tmp;
+	int i;
 
-	if (line)
-	{
-		tmp = line;
-		line = ft_strjoin(line, buf);
-		free(tmp);
-	}
-	else
-		line = ft_strdup(buf);
-	return (line);
-}
-
-static char	*keeper_separator(char **line)
-{
-	size_t	i;
-	char	*tmp;
-	char	*keeper;
-	size_t	len;
-
-	if (!*line)
-		return (NULL);
-	len = ft_strlen(*line);
 	i = 0;
-	while ((*line)[i] != '\n' && i < len)
-		i++;
-	if (i < len)
+	*new_line_ptr = NULL;
+	if ((*new_line_ptr = ft_strchr(over, '\n')))
 	{
-		tmp = *line;
-		keeper = ft_substr(*line, i + 1, len);
-		*line = ft_substr(*line, 0, i);
-		if (!*line || !keeper)
-			return (NULL);
-		free(tmp);
-		return (keeper);
+		**new_line_ptr = '\0';
+		if (!(*line = ft_strdup(over)))
+			return (-1);
+		ft_strcpy(over, ++(*new_line_ptr));
 	}
 	else
-		return (NULL);
+	{
+		if (!(*line = ft_strdup(over)))
+			return (-1);
+		while (i <= BUFFER_SIZE)
+			over[i++] = '\0';
+	}
+	return (1);
 }
 
 int			get_next_line(int fd, char **line)
 {
-	static char	*keeper;
+	static char	over[BUFFER_SIZE + 1];
 	char		buf[BUFFER_SIZE + 1];
-	ssize_t		size;
+	char		*new_line_ptr;
+	char		*temp;
+	int			read_bytes;
 
-	if (fd < 0 || !line || read(fd, buf, 0) != 0 || (BUFFER_SIZE) < 1)
+	read_bytes = 1;
+	if (BUFFER_SIZE < 1 || fd < 0 || !line || (read(fd, buf, 0) != 0) || \
+	!(check_over(over, &new_line_ptr, line)))
 		return (-1);
-	*line = keeper;
-	while ((size = read(fd, buf, BUFFER_SIZE)))
+	while (!new_line_ptr && ((read_bytes = read(fd, buf, BUFFER_SIZE)) > 0))
 	{
-		buf[size] = 0;
-		if (!(*line = add_buf(*line, buf)))
+		buf[read_bytes] = '\0';
+		if ((new_line_ptr = ft_strchr(buf, '\n')))
+		{
+			*new_line_ptr = '\0';
+			ft_strcpy(over, ++new_line_ptr);
+		}
+		temp = *line;
+		if (!(*line = ft_strjoin(*line, buf)))
 			return (-1);
-		if (ft_strchr(buf, '\n'))
-			break ;
+		free_mm(temp);
 	}
-	if (!(keeper = keeper_separator(line)) && size)
-		return (-1);
-	if (!*line)
-		return (!(*line = ft_strdup(""))) ? -1 : 0;
-	return (!keeper && !size) ? 0 : 1;
+	return ((ft_strlen(over) || read_bytes > 0) ? 1 : read_bytes);
 }

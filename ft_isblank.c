@@ -1,18 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_bzero.c                                         :+:      :+:    :+:   */
+/*   ft_isblank.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cjani <cjani@studen.21-school.ru>          +#+  +:+       +#+        */
+/*   By: ccaptain <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/05/02 15:23:20 by flexer            #+#    #+#             */
-/*   Updated: 2020/05/13 13:22:34 by cjani            ###   ########.fr       */
+/*   Created: 2020/09/27 20:30:10 by ccaptain          #+#    #+#             */
+/*   Updated: 2020/09/27 20:30:47 by ccaptain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
-void				ft_bzero(void *dest, size_t n)
+int		ft_isblank(int c)
 {
-	ft_memset(dest, '\0', n);
+	if (c == ' ' || c == '\t')
+		return (1);
+	else
+		return (0);
 }

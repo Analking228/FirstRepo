@@ -24,7 +24,7 @@ char		*ft_strjoin(char const *prestr, char const *sufstr)
 	i = 0;
 	j = 0;
 	newl = ft_strlen(prestr) + ft_strlen(sufstr) + 1;
-	newptr = (char *)ft_calloc(newl, sizeof(char));
+	newptr = (char *)calloc_mem(newl, sizeof(char));
 	if (!newptr)
 		return (NULL);
 	while (prestr[i])

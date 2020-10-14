@@ -16,13 +16,11 @@ t_list		*ft_lstnew(void *content)
 {
 	t_list	*tmp;
 
-	tmp = (t_list *)malloc(sizeof(t_list));
-	if (tmp)
+	if (tmp = (t_list *)malloc_mem(sizeof(t_list)))
 	{
 		tmp->content = content;
 		tmp->next = NULL;
+		return (tmp);
 	}
-	else
-		return (NULL);
-	return (tmp);
+	return (NULL);
 }

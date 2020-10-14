@@ -12,71 +12,46 @@
 
 #include "libft.h"
 
-static int	ft_abs(int n)
+static int	num_count(int n)
 {
-	if (n < 0)
-		return (-n);
-	return (n);
-}
+	int	count;
 
-static int	ft_len(int n)
-{
-	int		len;
-
-	len = 0;
-	if (!n)
+	if (n == 0)
 		return (1);
-	while (n)
+	count = 0;
+	if (n < 0)
+		count++;
+	while (n != 0)
 	{
-		n = n / 10;
-		len++;
+		count++;
+		n /= 10;
 	}
-	return (len);
-}
-
-static char	*ft_revstr(char *str)
-{
-	int		l;
-	int		i;
-	char	tmp;
-
-	l = ft_strlen(str);
-	i = 0;
-	while (i < (l / 2))
-	{
-		tmp = str[i];
-		str[i] = str[l - i - 1];
-		str[l - i - 1] = tmp;
-		i++;
-	}
-	str[ft_strlen(str)] = '\0';
-	return (str);
+	return (count);
 }
 
 char		*ft_itoa(int n)
 {
-	int		numlen;
-	int		minus;
 	char	*str;
-	int		i;
+	int		count;
+	long	num;
 
-	i = 0;
-	minus = 0;
-	if (n < 0)
-		minus = 1;
-	numlen = minus + ft_len(n);
-	str = (char *)ft_calloc(numlen + 1, sizeof(char));
+	num = n;
+	count = num_count(n);
+	str = (char *)malloc((count + 1) * sizeof(char));
 	if (!str)
 		return (NULL);
-	str[i] = 48;
-	while (n)
+	str[count] = 0;
+	if (num < 0)
 	{
-		str[i++] = 48 + ft_abs(n % 10);
-		n /= 10;
+		str[0] = '-';
+		num = -num;
 	}
-	if (minus)
-		str[i] = 45;
-	str[++i] = '\0';
-	ft_revstr(str);
+	else if (num == 0)
+		str[0] = '0';
+	while (num > 0)
+	{
+		str[--count] = '0' + num % 10;
+		num /= 10;
+	}
 	return (str);
 }

@@ -18,10 +18,11 @@ t_list			*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 	t_list	*tmp;
 
 	first = NULL;
+	if (!lst || !f)
+		return (first);
 	while (lst)
 	{
-		tmp = ft_lstnew(f(lst->content));
-		if (!tmp)
+		if (!(tmp = ft_lstnew(f(lst->content))))
 		{
 			ft_lstclear(&first, del);
 			return (NULL);

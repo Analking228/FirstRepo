@@ -29,7 +29,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 		newl = strl - (size_t)start;
 	else
 		newl = len;
-	if (!(sub = (char*)ft_calloc(newl + 1, sizeof(char))))
+	if (!(sub = (char*)calloc_mem(newl + 1, sizeof(char))))
 		return (NULL);
 	while (i < newl)
 	{

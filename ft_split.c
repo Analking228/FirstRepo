@@ -12,106 +12,72 @@
 
 #include "libft.h"
 
-static char		**ft_split_alloc(char *s, char c)
+static int	count_words(char const *s, char c)
 {
-	char		**split;
-	size_t		splitc;
-	size_t		i;
-
-	i = 0;
-	splitc = 0;
-	if (s[i] != c)
-		splitc++;
-	while (s[i])
-	{
-		if (s[i] == c)
-			if ((s[i + 1] != c) && (s[i + 1] != '\0'))
-				splitc++;
-		i++;
-	}
-	split = (char **)ft_calloc(splitc + 1, sizeof(s));
-	if (!split)
-		return (NULL);
-	return (split);
-}
-
-static void		ft_free(char **sp, size_t j)
-{
-	while (j--)
-		free(sp[j]);
-	free(sp);
-}
-
-static char		**ft_split_split_alloc(char **sp, char *s, char c)
-{
-	size_t		i;
-	size_t		count;
-	size_t		j;
+	int		count;
+	int		i;
 
 	count = 0;
 	i = 0;
-	j = 0;
-	while (s[i])
+	while (s && s[i])
 	{
 		if (s[i] != c)
-			count++;
-		if ((s[i] == c && count != 0) || (s[i] != c && s[i + 1] == '\0'))
 		{
-			if (!(sp[j] = (char *)ft_calloc(count + 1, sizeof(char))))
-			{
-				ft_free(sp, j);
-				return (NULL);
-			}
-			count = 0;
-			j++;
+			count++;
+			while (s[i] != c && s[i] && s[i + 1])
+				i++;
 		}
 		i++;
 	}
-	sp[j] = NULL;
-	return (sp);
+	return (count);
 }
 
-char			**ft_split_injection(char **sp, char *s, char c)
+static int	count_len(char const *str, char c)
 {
-	size_t		i;
-	size_t		j;
-	size_t		k;
+	int		i;
 
 	i = 0;
-	j = 0;
-	k = 0;
-	while (s[i])
-	{
-		if (s[i] == c && k != 0)
-		{
-			sp[j][k] = '\0';
-			j++;
-			k = 0;
-		}
-		if (s[i] != c)
-		{
-			sp[j][k] = s[i];
-			k++;
-		}
+	while (str && str[i] && str[i] != c)
 		i++;
-	}
-	return (sp);
+	return (i);
 }
 
-char			**ft_split(char const *s, char c)
+static void	*ft_free_mem(char **tab)
 {
-	char		**split;
-	char		*str;
+	int		i;
 
-	if (!s)
-		return (NULL);
+	i = 0;
+	while (tab[i] != NULL)
+		free_mem(tab[i++]);
+	free_mem(tab);
+	return (NULL);
+}
+
+char		**ft_split(char const *s, char c)
+{
+	int		i;
+	int		j;
+	int		word_count;
+	char	*str;
+	char	**tab;
+
 	str = (char *)s;
-	split = ft_split_alloc(str, c);
-	if (!split)
+	i = 0;
+	j = 0;
+	word_count = count_words(s, c);
+	if (!s || !(tab = (char **)calloc_mem((word_count + 1), sizeof(char *))))
 		return (NULL);
-	split = ft_split_split_alloc(split, str, c);
-	if (!split)
-		return (NULL);
-	split = ft_split_injection(split, str, c);
-	return (split);
+	while (j < word_count)
+	{
+		i = count_len(str, c);
+		if (i > 0)
+		{
+			if (!(tab[j++] = ft_substr(str, 0, i)))
+				return (ft_free_mem(tab));
+		}
+		i++;
+		str += i;
+	}
+	tab[j] = NULL;
+	return (tab);
 }

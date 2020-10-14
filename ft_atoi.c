@@ -12,45 +12,31 @@
 
 #include "libft.h"
 
-int		polar_counter(int minus, const char *s, int i)
-{
-	int	number;
+#include "libft.h"
 
-	number = 0;
-	if (minus > 0)
+int					ft_atoi(char const *str)
+{
+	int				n;
+	unsigned long	r;
+
+	n = 1;
+	r = 0;
+	while (ft_isspace(*str))
+		str++;
+	if (*str == '+' || *str == '-')
 	{
-		while (ft_isdigit(s[i]))
-		{
-			number *= 10;
-			number += s[i] - 48;
-			i++;
-		}
+		if (*str == '-')
+			n = -1;
+		str++;
 	}
-	else
-		while (ft_isdigit(s[i]))
-		{
-			number *= 10;
-			number -= s[i] - 48;
-			i++;
-		}
-	return (number);
-}
-
-int		ft_atoi(const char *s)
-{
-	int	minus;
-	int	i;
-
-	i = 0;
-	minus = -1;
-	while (ft_isspace(s[i]) && (s[i] != '\0'))
-		i++;
-	if (ft_isdigit(s[i]))
-		return (polar_counter(-minus, s, i));
-	else if (s[i] == 43)
-		return (polar_counter(-minus, s, ++i));
-	else if (s[i] == 45)
-		return (polar_counter(minus, s, ++i));
-	else
-		return (0);
+	while (*str != '\0' && ft_isdigit(*str))
+	{
+		if ((r * 10 + (*str - '0')) < r)
+			return ((n > 0) ? -1 : 0);
+		if ((r) > 8000)
+			return ((int)(r * n));
+		r = r * 10 + (*str - '0');
+		str++;
+	}
+	return ((int)(r * n));
 }

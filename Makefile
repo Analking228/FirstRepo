@@ -37,6 +37,7 @@ SOURCE =	ft_isspace.c\
 			ft_putchar.c\
 			ft_strjoin.c\
 			ft_substr.c\
+			ft_putendl.c\
 			manager.c\
 			mem_manage.c\
 			get_next_line.c\
@@ -48,7 +49,8 @@ SOURCE =	ft_isspace.c\
 			ft_lstdelone.c\
 			ft_lstiter.c\
 			ft_lstlast.c\
-			ft_lstmap.c
+			ft_lstmap.c\
+			ft_strcpy.c
 
 INCLUDES = ./libft.h
 OBJ = $(SOURCE:.c=.o)
@@ -61,7 +63,7 @@ $(NAME) : $(OBJ) $(INCLUDES)
 	@ranlib $(NAME)
 
 %.o : %.c
-	$(CC) $(FLAGS) -c -o $@ $<
+	@$(CC) $(FLAGS) -c -o $@ $<
 
 clean : 
 	@rm -rf $(OBJ)

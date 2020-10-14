@@ -1,18 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_bzero.c                                         :+:      :+:    :+:   */
+/*   ft_strcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cjani <cjani@studen.21-school.ru>          +#+  +:+       +#+        */
+/*   By: ccaptain <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/05/02 15:23:20 by flexer            #+#    #+#             */
-/*   Updated: 2020/05/13 13:22:34 by cjani            ###   ########.fr       */
+/*   Created: 2020/08/11 17:59:17 by ccaptain          #+#    #+#             */
+/*   Updated: 2020/08/11 17:59:30 by ccaptain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
-void				ft_bzero(void *dest, size_t n)
+char		*ft_strcpy(char *dst, const char *src)
 {
-	ft_memset(dest, '\0', n);
+	int		i;
+
+	i = 0;
+	while (src[i])
+	{
+		dst[i] = src[i];
+		i++;
+	}
+	dst[i] = '\0';
+	return (dst);
 }
