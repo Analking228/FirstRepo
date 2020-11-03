@@ -58,7 +58,7 @@ int			get_next_line(int fd, char **line)
 		temp = *line;
 		if (!(*line = ft_strjoin(*line, buf)))
 			return (-1);
-		free_mm(temp);
+		free_mem(temp);
 	}
 	return ((ft_strlen(over) || read_bytes > 0) ? 1 : read_bytes);
 }

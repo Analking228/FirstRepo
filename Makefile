@@ -1,6 +1,7 @@
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror
 SOURCE =	ft_isspace.c\
+			ft_isblank.c\
 			ft_putchar_fd.c\
 			ft_strlcat.c\
 			ft_tolower.c\
